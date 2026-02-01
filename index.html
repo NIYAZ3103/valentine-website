@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Valentine's Day</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+
+  </head>
+  <body class="flex items-center justify-center h-screen">
+  <div class="flex flex-col items-center">
+    <img
+  id="mainImage"
+  src="./images/image1.gif"
+  alt="Cute gif"
+  class="h-[300px] rounded-md"
+/>
+
+    <h1
+  id="questionText"
+  class="text-4xl font-bold text-pink-600 mt-4"
+>
+  Will you be my Valentine? ❤️
+</h1>
+
+    <div id="buttonContainer" class="flex gap-4 mt-6">
+
+  <button
+    id="yesButton"
+    class="bg-green-500 text-white px-6 py-2 rounded-md text-xl"
+  >
+    Yes
+  </button>
+
+  <button
+    id="noButton"
+    class="bg-red-500 text-white px-6 py-2 rounded-md text-xl"
+  >
+    No
+  </button>
+</div>
+
+
+  </div>
+  <script type="module">
+
+    import confetti from "https://cdn.skypack.dev/canvas-confetti";
+
+  const yesButton = document.getElementById("yesButton");
+  const noButton = document.getElementById("noButton");
+  const questionText = document.getElementById("questionText");
+  const mainImage = document.getElementById("mainImage");
+  const buttonContainer = document.getElementById("buttonContainer");
+
+  let noClickCount = 0;
+  let yesButtonSize = 1;
+
+
+  const imagePaths = [
+  "./images/image1.gif",
+  "./images/image2.gif",
+  "./images/image3.gif",
+  "./images/image4.gif",
+  "./images/image5.gif",
+  "./images/image6.gif",
+  "./images/image7.gif"
+];
+const noMessages = [
+  "No",
+  "Are you sure?",
+  "Really sure?",
+  "Please 🥺",
+  "Don’t do this to me 😭",
+  "I’m gonna cry 💔",
+  "Okay fine…"
+];
+
+
+
+
+  yesButton.addEventListener("click", function () {
+  questionText.textContent = "Yayyy!! ❤️";
+  mainImage.src = "./images/image1.gif";
+  buttonContainer.style.display = "none";
+
+  confetti({
+    particleCount: 150,
+    spread: 70,
+    origin: { y: 0.6 }
+  });
+});
+
+
+
+  noButton.addEventListener("click", function () {
+  noClickCount = noClickCount + 1;
+
+  if (noClickCount < imagePaths.length) {
+    mainImage.src = imagePaths[noClickCount];
+    noButton.textContent = noMessages[noClickCount];
+  }
+
+  yesButtonSize = yesButtonSize + 0.15;
+  yesButton.style.transform = "scale(" + yesButtonSize + ")";
+});
+
+
+
+
+
+</script>
+
+
+
+
+</body>
+
+
+</html>
