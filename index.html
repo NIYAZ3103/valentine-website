@@ -45,6 +45,14 @@
   >
     No
   </button>
+
+  <button
+  id="nextButton"
+  class="mt-6 px-6 py-3 bg-pink-500 text-white rounded-lg text-lg font-semibold opacity-0 transform translate-y-4 transition-all duration-700"
+>
+  Click here 💕
+</button>
+
 </div>
 
 
@@ -58,6 +66,7 @@
   const questionText = document.getElementById("questionText");
   const mainImage = document.getElementById("mainImage");
   const buttonContainer = document.getElementById("buttonContainer");
+  const nextButton = document.getElementById("nextButton");
 
   let noClickCount = 0;
   let yesButtonSize = 1;
@@ -88,8 +97,10 @@ const noMessages = [
 
   yesButton.addEventListener("click", function () {
   questionText.textContent = "Yayyy!! ❤️";
-  mainImage.src = "./image1.gif";
   buttonContainer.style.display = "none";
+
+  nextButton.classList.remove("opacity-0", "translate-y-4");
+  nextButton.classList.add("opacity-100", "translate-y-0");
 
   confetti({
     particleCount: 150,
@@ -115,7 +126,9 @@ const noMessages = [
 });
 
 
-
+nextButton.addEventListener("click", function () {
+  window.location.href = "activities.html";
+});
 
 
 </script>
